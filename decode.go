@@ -71,8 +71,8 @@ func format(plaintext string) {
 	// plaintext_map := make(map[string]interface{})
 	fmt.Println("UUID：\t\t", plaintext_arr[0])
 	fmt.Println("使用时长(天)：\t", plaintext_arr[1])
-	fmt.Println("设备数量：\t\t", plaintext_arr[2])
-	fmt.Println("使用日期：\t\t", plaintext_arr[3])
+	fmt.Println("设备数量：\t", plaintext_arr[2])
+	fmt.Println("使用日期：\t", plaintext_arr[3])
 }
 
 // 读取文件

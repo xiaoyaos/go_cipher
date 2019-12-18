@@ -32,7 +32,7 @@ func main() {
 	var device_limit int
 	var auth_date string
 	flag.StringVar(&UUID, "UUID", "", "机器码")
-	flag.IntVar(&use_duration, "duration", 10, "年龄")
+	flag.IntVar(&use_duration, "duration", 10, "授权时长")
 	flag.IntVar(&device_limit, "device", 100, "设备数")
 	flag.StringVar(&auth_date, "auth_date", "1997-01-01", "授权日期")
 	flag.Parse()
