@@ -13,11 +13,11 @@ import (
 	"strings"
 )
 
-const filename = "e:license.dat"
+const filename = "./license.dat"
 
 func main() {
 	license := readFile()
-	fmt.Println("读取到的密文：", license)
+	// fmt.Println("读取到的密文：", license)
 	plaintext := decode(license)
 	format(plaintext)
 }
@@ -35,15 +35,14 @@ func decode(license string) string {
 	suffix_len := len(license_arr) - (32 - perfix_len)
 	ciphertext_arr := license_arr[1+perfix_len : suffix_len]
 	ciphertext_str := strings.Join(ciphertext_arr, "")
-	fmt.Println("分析出密文：", ciphertext_str)
-	fmt.Println("开始解码")
+	// fmt.Println("分析出密文：", ciphertext_str)
 
 	salt := []byte("hsck")
 	password := []byte("hsckhsckhsckhsckhsckhsckhsckhsck")
 	key := pbkdf2.Key(password, salt, 2333, 32, sha256.New)
 
 	ciphertext, _ := hex.DecodeString(ciphertext_str)
-	fmt.Printf("分析出密文：%x", ciphertext)
+	// fmt.Printf("分析出密文：%x\r\n", ciphertext)
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		panic(err)
@@ -59,7 +58,7 @@ func decode(license string) string {
 	}
 	mode := cipher.NewCFBDecrypter(block, iv)
 	mode.XORKeyStream(ciphertext, ciphertext)
-	fmt.Printf("\r\n解析出字符串：%s\n", ciphertext)
+	// fmt.Printf("\r\n解析出字符串：%s\n", ciphertext)
 	return string(ciphertext)
 }
 

@@ -36,7 +36,7 @@ func main() {
 	flag.IntVar(&device_limit, "device", 100, "设备数")
 	flag.StringVar(&auth_date, "auth_date", "1997-01-01", "授权日期")
 	flag.Parse()
-	fmt.Printf("机器码：%s, 授权时长：%d天， 设备数量：%d台, 授权时间：%s \r\n", UUID, use_duration, device_limit, auth_date)
+	fmt.Printf("机器码：%s\n授权时长：%d天\n设备数量：%d台\n授权时间：%s \r\n", UUID, use_duration, device_limit, auth_date)
 
 	continues := "Y"
 	fmt.Printf("请确认生成许可授权信息,任意键继续,退出（N）：")
@@ -131,7 +131,7 @@ func writeFile(ciphertext string) {
 	fmt.Println("最终密文：", wireteString)
 	fmt.Println("开始写文件")
 
-	var filename = "e:license.dat"
+	var filename = "./license.dat"
 	var f *os.File
 	var err1 error
 	/***************************** 第一种方式: 使用 io.WriteString 写入文件 ***********************************************/
