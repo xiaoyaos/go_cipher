@@ -136,13 +136,15 @@ func writeFile(ciphertext string) {
 	var err1 error
 	/***************************** 第一种方式: 使用 io.WriteString 写入文件 ***********************************************/
 	if checkFileIsExist(filename) { //如果文件存在
-		f, err1 = os.OpenFile(filename, os.O_APPEND, 0666) //打开文件
-		f, err1 = os.Create(filename)                      //创建文件
+		// f, err1 = os.OpenFile(filename, os.O_APPEND, 0666) //打开文件
+		// f, err1 = os.Create(filename)                      //创建文件
 		fmt.Println("文件存在")
 	} else {
 		f, err1 = os.Create(filename) //创建文件
 		fmt.Println("文件不存在")
 	}
+	defer f.Close() // 安全的关闭文件
+
 	if err1 != nil {
 		panic(err1)
 	}
